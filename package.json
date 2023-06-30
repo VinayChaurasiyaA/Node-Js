@@ -1,11 +1,11 @@
 {
   "name": "tutorials",
-    "version": "1.0.0",
-    "scripts": {
-      "start": "nodemon 7-network.js"   
-    },
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon 7-network.js"
+  },
   "dependencies": {
+    "cors": "^2.8.5",
     "nodemon": "^2.0.20"
   }
-  
 }

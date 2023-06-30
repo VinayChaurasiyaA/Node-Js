@@ -7,15 +7,25 @@ const logger = (req, res, next) => {
   const method = req.method
   const url = req.url
   const time = new Date().getFullYear()
-  console.log(method, url, time)
-  next()
+  if(url !== "home") {
+    // res.send("Welcome " + method);
+    res.status(401).send('Unauthorized');
+  }
+  // console.log(method, url, time)
+
+  // res.send(method , url , time);
+  else {
+
+    next()
+  }
 }
 
 app.get('/', logger, (req, res) => {
-  res.send('Home')
+  res.send("home")
 })
 app.get('/about', logger, (req, res) => {
   res.send('About')
+  // res.send(method , url , time);
 })
 
 app.listen(5000, () => {

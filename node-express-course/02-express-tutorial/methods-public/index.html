@@ -19,7 +19,7 @@
       </div>
     </nav>
     <main>
-      <form action="/login" method="POST">
+      <form action="http://localhost:5000/login" method="POST">
         <h3>Traditional Form</h3>
         <div class="form-row">
           <label for="name"> enter name </label>
@@ -29,4 +29,9 @@
       </form>
     </main>
   </body>
+  <script>
+    function submit(e) {
+      e.preventDefault();
+    }
+  </script>
 </html>

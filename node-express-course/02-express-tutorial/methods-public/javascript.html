@@ -50,7 +50,7 @@
 
       const fetchPeople = async () => {
         try {
-          const { data } = await axios.get('/api/people')
+          const { data } = await axios.get('http://localhost:5000/api/people')
 
           const people = data.data.map((person) => {
             return `<h5>${person.name}</h5>`
