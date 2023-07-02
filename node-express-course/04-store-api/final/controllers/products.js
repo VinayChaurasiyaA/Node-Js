@@ -19,7 +19,7 @@ const getAllProducts = async (req, res) => {
     queryObject.company = company;
   }
   if (name) {
-    queryObject.name = { $regex: name, $options: 'i' };
+    queryObject.name = { $regex: name, $options: 'i' }; 
   }
   if (numericFilters) {
     const operatorMap = {

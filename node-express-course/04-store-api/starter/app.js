@@ -1,4 +1,4 @@
-console.log('04 Store API')
+
 require('dotenv').config();
 require("express-async-errors")
 
@@ -15,7 +15,7 @@ const notFoundMiddleware = require('./middleware/not-found')
 
 // in-built middlewares;
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 // the middlewares we made:
 app.use(errorMiddleware);
@@ -40,3 +40,5 @@ const start = async () => {
         console.log(error)
     }
 }
+start()
+console.log('04 Store API')
