@@ -8,12 +8,17 @@ const app = express();
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+const connect = require('./db/connect')
+// controllers
+const send = require("./controllers/sendEmail")
+
 app.use(express.json());
 
 // routes
 app.get('/', (req, res) => {
-  res.send('<h1>Email Project</h1>');
+  res.send('<h1>Email Project</h1> <a href ="/send"> Send Email</a>');
 });
+app.get('/send' , send)
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
@@ -22,6 +27,7 @@ const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
+    await connect(process.env.MONGO_URI)
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
