@@ -17,5 +17,26 @@ const sendGrid = async (req , res) => {
     res.json(sendEmail)
 }
 // send mails using nodemailers
+const nodemailerSend = async (req ,res) => {
+    let dummyAccount = await nodemailer.createTestAccount();
+    console.log(dummyAccount);
 
-module.exports = sendGrid
+    let configOptions = {    
+        // in host we have to put the smpt server of whichever the type of mail service we are using
+        host: "smtp.gmail.com", 
+        port: 587,
+        tls: {
+            rejectUnauthorized: true,
+            minVersion: "TLSv1.2"
+        }
+    }
+    const transporter = nodemailer.createTransport(configOptions)
+    let message = await transporter.sendMail({
+        to: 'vinay@github/com',
+        from : {from} = req.body,
+        text : {message} = req.body,
+
+    });
+    res.json(message);
+}
+module.exports = {sendGrid , nodemailerSend}
